@@ -20,8 +20,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SyncEngineDashboardTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SyncDashboardScreen()
+                Scaffold(modifier = Modifier.fillMaxSize()) { paddingValues ->
+                    SyncDashboardScreen(paddingValues = paddingValues)
                 }
             }
         }
