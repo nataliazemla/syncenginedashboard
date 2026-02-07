@@ -1,6 +1,6 @@
 package com.example.syncenginedashboard.domain
 
-data class SourceSyncState(
+data class SyncSourceState(
     val source: SyncSource,
     val status: SyncStatus = SyncStatus.Idle,
     val currentStep: SyncStep? = null,

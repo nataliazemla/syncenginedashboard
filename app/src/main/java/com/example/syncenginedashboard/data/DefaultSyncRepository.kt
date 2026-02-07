@@ -4,8 +4,9 @@ import com.example.syncenginedashboard.core.dispatchers.DispatcherProvider
 import com.example.syncenginedashboard.data.local.InMemoryLocalDataSource
 import com.example.syncenginedashboard.data.remote.FakeRemoteDataSource
 import com.example.syncenginedashboard.domain.LogEvent
-import com.example.syncenginedashboard.domain.SourceSyncState
+import com.example.syncenginedashboard.domain.SyncSourceState
 import com.example.syncenginedashboard.domain.SyncError
+import com.example.syncenginedashboard.domain.SyncRepository
 import com.example.syncenginedashboard.domain.SyncRunId
 import com.example.syncenginedashboard.domain.SyncSource
 import com.example.syncenginedashboard.domain.SyncStatus
@@ -43,9 +44,9 @@ class DefaultSyncRepository(
     private val jobs: MutableMap<SyncSource, Job> = mutableMapOf()
 
     private val _sourceStates = MutableStateFlow(
-        sources.associateWith { source -> SourceSyncState(source = source) }
+        sources.associateWith { source -> SyncSourceState(source = source) }
     )
-    override val sourceStates: StateFlow<Map<SyncSource, SourceSyncState>> =
+    override val sourceStates: StateFlow<Map<SyncSource, SyncSourceState>> =
         _sourceStates.asStateFlow()
 
     private val _logs = MutableSharedFlow<LogEvent>(
